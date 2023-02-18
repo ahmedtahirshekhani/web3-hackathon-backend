@@ -10,7 +10,7 @@ from pathlib import Path
 import openai
 
 
-PROMPT = "A car on a plane"
+PROMPT = "A car on a car"
 
 DATA_DIR = Path.cwd() / "responses"
 

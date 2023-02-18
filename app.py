@@ -1,15 +1,39 @@
 import re
 from datetime import datetime
 
-from flask import Flask
+from flask import Flask, request
 import os
 import glob
 import matplotlib.pyplot as plt
-
+import openai
 
 from flask import send_file
 
+
 app = Flask(__name__)
+
+
+# openai.api_key = "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"
+
+# PROMPT = "A car on a plane"
+
+# DATA_DIR = Path.cwd() / "responses"
+
+# DATA_DIR.mkdir(exist_ok=True)
+
+
+# response = openai.Image.create(
+#     prompt=PROMPT,
+#     n=1,
+#     size="256x256",
+#     response_format="b64_json",
+# )
+
+
+# file_name = DATA_DIR / f"{PROMPT[:5]}-{response['created']}.json"
+
+# with open(file_name, mode="w", encoding="utf-8") as file:
+#     json.dump(response, file)
 
 
 @app.route("/", methods=["GET"])
@@ -20,7 +44,8 @@ def home():
 
 @app.route("/api/ai", methods=["GET"])
 def get_image():
-
+    param = request.args.get("prompt")
+    print(param)
     directory = os.getcwd() + "\\images"
 
     full_path_file = glob.glob(directory + "/*")[0]
