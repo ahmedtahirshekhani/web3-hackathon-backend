@@ -17,7 +17,11 @@ DATA_DIR = Path.cwd() / "responses"
 DATA_DIR.mkdir(exist_ok=True)
 
 
-openai.api_key = "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"
+# openai.api_key = "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"
+
+# My API Key
+openai.api_key = "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"
+
 
 response = openai.Image.create(
     prompt=PROMPT,
